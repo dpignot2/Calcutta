@@ -142,8 +142,8 @@ Open `http://localhost:3000/calcutta_dashboard.html` in one tab, your AuctionPro
 | + adj_o_rank, adj_d_rank | Championship profile, balance/lopsided detection |
 | + adj_t | Trapezoid of Excellence check |
 | + luck | Luck discount / unlucky undervaluation boost |
-| + vegas_odds | 3-way ensemble, Vegas disagreement alerts |
-| + kenpom_r64–champ | Full KenPom ensemble (biggest accuracy gain) |
+| + vegas_odds | Vegas tab comparison, disagreement alerts (not blended into EV) |
+| + kenpom_r64–champ | KenPom/bracket ensemble — biggest accuracy gain |
 | + womens_win_prob | Women's championship bonus EV |
 | + torvik/kenpom raw values | Source disagreement flagging (optional cross-check) |
 | + history.csv | Seed-level buy/avoid verdicts, price ranges, market bias |
@@ -152,76 +152,60 @@ Open `http://localhost:3000/calcutta_dashboard.html` in one tab, your AuctionPro
 
 ## EV Model — How Expected Value is Calculated
 
-### Stage 1: Three Probability Sources
+### Stage 1: Two Probability Sources
 
-Each team gets a probability of reaching each tournament round (R64 through Championship) from up to three independent sources:
+Each team gets a probability of reaching each tournament round (R64 through Championship) from two sources:
 
 **Source 1: Bracket-Adjusted Model** (from `rating`)
 - Uses a logistic win probability function on AdjEM differences
 - Knows the actual bracket path — a 5-seed facing a strong 4-seed in R32 gets different odds than one facing a weak 4-seed
-- Blends 60% opponent-aware model / 40% historical seed rates
-- Falls back to pure historical rates if no ratings provided
+- Falls back to pure historical seed rates if no ratings provided
 
-**Source 2: KenPom Round Probabilities** (from `kenpom_probs`)
+**Source 2: KenPom Round Probabilities** (from `kenpom_r64` through `kenpom_champ`)
 - Cumulative P(reach each round) from KenPom's 1-million-simulation tournament model
 - Already accounts for specific bracket path, tempo adjustments, and full predictive model
 - The most accurate single source
 
-**Source 3: Vegas Championship Odds** (from `vegas_odds`)
-- Futures odds converted to de-vigged title probability
-- Aggregates sharp money, injury news, and information not in ratings
+Vegas odds are **not** blended into the EV calculation. They are displayed in the Vegas tab for comparison only.
 
 ### Ensemble Blending
 
-| Data available | Blend formula |
-|---------------|---------------|
-| KenPom + Bracket + Vegas | base = KenPom 70% + Bracket 30%, then Vegas anchors title at 70/30 |
-| KenPom + Bracket (no Vegas) | base = KenPom 70% + Bracket 30% |
-| Bracket + Vegas (no KenPom) | base = Bracket, then Vegas anchors title at 50/50 |
-| Bracket only | Bracket model 100% |
+When KenPom round probabilities are available, they are blended with the bracket model per round:
 
-### Stage 2: Vegas Late-Round Anchoring
+| Round | Blend |
+|-------|-------|
+| R64 | 100% bracket model (our logistic model outperforms KenPom here) |
+| R32 | 90% KenPom / 10% bracket |
+| Sweet 16+ | 70% KenPom / 30% bracket |
 
-Vegas only provides a championship probability. Instead of spreading adjustments evenly across all rounds, the correction concentrates in later rounds where uncertainty is highest:
+When KenPom probs are not available, the bracket model is used alone.
 
-| Round | Weight | Share of adjustment |
-|-------|--------|-------------------|
-| R64 | 1 | 6% |
-| R32 | 1 | 6% |
-| Sweet 16 | 2 | 13% |
-| Elite 8 | 3 | 19% |
-| Final Four | 4 | 25% |
-| Championship | 5 | 31% |
+### Stage 2: Profile Modifiers
 
-### Stage 3: KenPom Profile Modifiers
-
-Five checks that adjust deep-run probabilities based on team profile:
+Three checks that adjust deep-run probabilities based on team profile. These stack multiplicatively and concentrate in later rounds (Sweet 16 through Championship):
 
 | Check | Input | Effect | Rationale |
 |-------|-------|--------|-----------|
-| 🏆 Championship Profile | adj_o_rank ≤ 25 AND adj_d_rank ≤ 25 | +5% (or −7% to −15% if missing) | 22/23 champions since 2002 had this |
-| 📐 Trapezoid of Excellence | AdjEM > 15, moderate tempo | +3% (or −5% for extreme pace) | Champions cluster at high efficiency + median pace |
-| 🍀 Luck | luck > 0.04 | −5% to −10% | Winning close games at unsustainable rate |
-| ⚖️ Balance | Both ranks ≤ 40 | +2% (or −8% if extremely lopsided) | Can win shootouts AND grind-it-out games |
-| 🔀 Source Disagreement | AdjEM gap ≥ 3 or rank gap ≥ 20 | Flagged (no auto-adjustment) | Optional — only shown when both KenPom and Barttorvik data is provided |
+| 🏆 Championship Profile | adj_o_rank ≤ 25 AND adj_d_rank ≤ 25 | +12% (or −15% to −20% if missing) | 22/23 champions since 2002 had this |
+| ⚖️ Balance | Both ranks ≤ 40, gap ≤ 20 | +5% | Can win shootouts AND grind-it-out games |
+| 🎲 Lopsided | One rank ≤ 15, other > 60 | −12% | One-dimensional teams underperform in tournament |
 
-Modifiers stack multiplicatively and concentrate in later rounds (Sweet 16 through Championship).
+Several other badges are **display-only** (no EV adjustment): 🍀 Lucky, 📐 Trapezoid, 🛡️ Elite Defense, 🔄 Returning, ⬆️/⬇️ Over/Underseeded, 🔀 Source Disagreement. These are shown as context for bidding decisions but don't change the math — KenPom probs already capture most of these signals.
 
-### Stage 4: Round EVs
+### Stage 3: Round EVs
 
 For each round:
 ```
-perTeamPayout = pot × payoutFraction × (1 − bonusTotal) / teamsInRound
-roundEV = P(reach round) × perTeamPayout
+roundEV = P(reach round) × pot × payoutFraction
 ```
 
-### Stage 5: Bonus EVs
+### Stage 4: Bonus EVs
 
 **Women's Championship Bonus** (`bonus_womens_champ`)
 ```
 womensEV = womens_win_prob × pot × bonus_fraction
 ```
-Only schools with women's tournament contenders get non-zero values (South Carolina, UConn, Iowa, LSU, etc.).
+Only schools with women's tournament contenders get non-zero values.
 
 **Biggest Blowout Bonus** (`bonus_biggest_blowout`)
 This is a **consolation prize** — it goes to the team that **LOSES** by the largest margin in Round of 64.
@@ -232,29 +216,12 @@ The model computes P(team suffers biggest blowout) using:
 - 16-seeds facing 1-seeds dominate (99% chance of losing by ~22 points)
 - Makes 16-seeds worth $10–14 instead of ~$0.05
 
-### Stage 6: Final EV
+### Stage 5: Final EV
 
 ```
 totalEV = sum(roundEVs) + womensEV + blowoutEV
 maxBid  = totalEV × 0.85   (15% risk discount)
 ```
-
-### Sensitivity — What Drives EV the Most
-
-On a $5,000 pot for a 1-seed ($872 base EV):
-
-| Factor | EV Impact | Notes |
-|--------|-----------|-------|
-| Championship probability model | ±$125–251 | KenPom vs seed-only swings $125 |
-| All red flags stacking | −$200 | Lopsided + lucky + no champ profile |
-| Pot size estimation | $174 per $1K | Bayesian estimator matters |
-| Vegas disagreement | +$151 | Sharp money sees 30% more upside |
-| Championship profile | +$33 | Top 25 O + D verification |
-| Women's bonus (South Carolina) | +$29 | Best case for any school |
-| Sweet 16 probability | +$6 | Later rounds dominate |
-| R64 probability | ~$0 | Payout is only $3.80 |
-
-For a 16-seed ($0.10 base EV): blowout bonus ($14) is 99% of total value.
 
 ---
 

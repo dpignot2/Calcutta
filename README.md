@@ -1,6 +1,6 @@
 # 🏀 Calcutta Auction Dashboard
 
-A real-time analytics dashboard for NCAA March Madness Calcutta auctions. Combines KenPom ratings, Barttorvik T-Rank, Vegas futures odds, and historical auction data into a live decision-support tool that tells you exactly what every team is worth — and updates as the auction happens.
+A real-time analytics dashboard for NCAA March Madness Calcutta auctions. Combines KenPom ratings, Vegas futures odds, and historical auction data into a live decision-support tool that tells you exactly what every team is worth — and updates as the auction happens.
 
 Built to run alongside [AuctionPro.co](https://www.auctionpro.co) with a live data feed, or standalone with manual entry.
 
@@ -38,7 +38,7 @@ For a real auction, see [Full Setup](#full-setup-for-a-real-auction) below.
 
 | When | What to do |
 |------|-----------|
-| **Pre-Selection Sunday** | Sign up for The Odds API (free). Optionally buy KenPom subscription. |
+| **Pre-Selection Sunday** | Buy KenPom subscription (~$25/yr). Sign up for The Odds API (free). |
 | **Selection Sunday** | Fill in `bracket.csv` with 64 teams, seeds, regions (15 min). |
 | **Selection Sunday evening** | Run `build_teams_csv.py` to pull all data (2 min). |
 | **Day before auction** | Fill in `config.csv` with your group's payout rules. Upload history.csv if available. |
@@ -64,13 +64,15 @@ Duke,2,East
 ### Step 3: Run the data builder
 
 ```powershell
-# With all sources (recommended)
+# KenPom + Vegas (recommended)
 $env:ODDS_API_KEY = "your_key"
-$env:KENPOM_API_KEY = "your_key"    # optional
-python build_teams_csv.py
+$env:KENPOM_API_KEY = "your_key"
+python build_teams_csv.py --no-torvik
 
-# Barttorvik only (free, no accounts needed)
-python build_teams_csv.py --no-kenpom --no-vegas
+# With Barttorvik cross-check (optional)
+$env:ODDS_API_KEY = "your_key"
+$env:KENPOM_API_KEY = "your_key"
+python build_teams_csv.py
 
 # See all options
 python build_teams_csv.py --help
@@ -110,13 +112,13 @@ Open `http://localhost:3000/calcutta_dashboard.html` in one tab, your AuctionPro
 | `name` | ✅ | Selection Sunday | Team name (must match across all files) |
 | `seed` | ✅ | Selection Sunday | Tournament seed (1–16) |
 | `region` | ✅ | Selection Sunday | Bracket region (4 regions) |
-| `rating` | ✅ | KenPom/Barttorvik | AdjEM (Adjusted Efficiency Margin = AdjO − AdjD) |
-| `adj_o` | optional | KenPom/Barttorvik | Adjusted Offensive Efficiency (pts per 100 possessions) |
-| `adj_d` | optional | KenPom/Barttorvik | Adjusted Defensive Efficiency (lower = better) |
-| `adj_o_rank` | optional | KenPom/Barttorvik | National rank in AdjO (1 = best offense) |
-| `adj_d_rank` | optional | KenPom/Barttorvik | National rank in AdjD (1 = best defense) |
-| `adj_t` | optional | KenPom/Barttorvik | Adjusted Tempo (possessions per 40 min, median ~68) |
-| `luck` | optional | KenPom/Barttorvik | Luck rating (positive = lucky, negative = unlucky) |
+| `rating` | ✅ | KenPom | AdjEM (Adjusted Efficiency Margin = AdjO − AdjD) |
+| `adj_o` | optional | KenPom | Adjusted Offensive Efficiency (pts per 100 possessions) |
+| `adj_d` | optional | KenPom | Adjusted Defensive Efficiency (lower = better) |
+| `adj_o_rank` | optional | KenPom | National rank in AdjO (1 = best offense) |
+| `adj_d_rank` | optional | KenPom | National rank in AdjD (1 = best defense) |
+| `adj_t` | optional | KenPom | Adjusted Tempo (possessions per 40 min, median ~68) |
+| `luck` | optional | KenPom | Luck rating (positive = lucky, negative = unlucky) |
 | `vegas_odds` | optional | Sportsbooks | Championship futures in American format (+500 = 5-to-1) |
 | `kenpom_r64` | optional | KenPom | Probability of winning R64 (reaching R32) |
 | `kenpom_r32` | optional | KenPom | Probability of reaching Sweet 16 |
@@ -125,12 +127,12 @@ Open `http://localhost:3000/calcutta_dashboard.html` in one tab, your AuctionPro
 | `kenpom_f4` | optional | KenPom | Probability of reaching Championship |
 | `kenpom_champ` | optional | KenPom | Probability of winning the championship |
 | `womens_win_prob` | optional | Odds API | Probability school's women's team wins women's tournament |
-| `torvik_rating` | optional | build_teams_csv.py | Barttorvik AdjEM (raw, before blending) |
-| `kenpom_rating` | optional | build_teams_csv.py | KenPom AdjEM (raw, before blending) |
-| `torvik_adj_o_rank` | optional | build_teams_csv.py | Barttorvik O rank (raw) |
-| `kenpom_adj_o_rank` | optional | build_teams_csv.py | KenPom O rank (raw) |
-| `torvik_adj_d_rank` | optional | build_teams_csv.py | Barttorvik D rank (raw) |
-| `kenpom_adj_d_rank` | optional | build_teams_csv.py | KenPom D rank (raw) |
+| `torvik_rating` | optional | build_teams_csv.py | Barttorvik AdjEM — only used for source disagreement flagging |
+| `kenpom_rating` | optional | build_teams_csv.py | KenPom AdjEM — only used for source disagreement flagging |
+| `torvik_adj_o_rank` | optional | build_teams_csv.py | Barttorvik O rank — only used for source disagreement flagging |
+| `kenpom_adj_o_rank` | optional | build_teams_csv.py | KenPom O rank — only used for source disagreement flagging |
+| `torvik_adj_d_rank` | optional | build_teams_csv.py | Barttorvik D rank — only used for source disagreement flagging |
+| `kenpom_adj_d_rank` | optional | build_teams_csv.py | KenPom D rank — only used for source disagreement flagging |
 
 ### What each data tier unlocks
 
@@ -143,7 +145,7 @@ Open `http://localhost:3000/calcutta_dashboard.html` in one tab, your AuctionPro
 | + vegas_odds | 3-way ensemble, Vegas disagreement alerts |
 | + kenpom_r64–champ | Full KenPom ensemble (biggest accuracy gain) |
 | + womens_win_prob | Women's championship bonus EV |
-| + torvik/kenpom raw values | Source disagreement flagging |
+| + torvik/kenpom raw values | Source disagreement flagging (optional cross-check) |
 | + history.csv | Seed-level buy/avoid verdicts, price ranges, market bias |
 
 ---
@@ -201,7 +203,7 @@ Five checks that adjust deep-run probabilities based on team profile:
 | 📐 Trapezoid of Excellence | AdjEM > 15, moderate tempo | +3% (or −5% for extreme pace) | Champions cluster at high efficiency + median pace |
 | 🍀 Luck | luck > 0.04 | −5% to −10% | Winning close games at unsustainable rate |
 | ⚖️ Balance | Both ranks ≤ 40 | +2% (or −8% if extremely lopsided) | Can win shootouts AND grind-it-out games |
-| 🔀 Source Disagreement | AdjEM gap ≥ 3 or rank gap ≥ 20 | Flagged (no auto-adjustment) | Uncertainty — investigate manually |
+| 🔀 Source Disagreement | AdjEM gap ≥ 3 or rank gap ≥ 20 | Flagged (no auto-adjustment) | Optional — only shown when both KenPom and Barttorvik data is provided |
 
 Modifiers stack multiplicatively and concentrate in later rounds (Sweet 16 through Championship).
 
@@ -387,17 +389,17 @@ For a 16-seed ($0.10 base EV): blowout bonus ($14) is 99% of total value.
 
 | Source | Cost | What it provides |
 |--------|------|-----------------|
-| Barttorvik (T-Rank) | Free | AdjO, AdjD, AdjT, AdjEM, Luck |
-| KenPom API | ~$25/year | AdjO, AdjD, AdjT, AdjEM, Luck, Tournament Probabilities |
+| KenPom API | ~$25/year | AdjO, AdjD, AdjT, AdjEM, Luck, Tournament Probabilities — **primary source** |
 | The Odds API | Free (500 req/mo) | Men's + Women's championship futures odds |
 | KenPom probs CSV | Manual (with subscription) | Tournament round probabilities (fallback if no API) |
+| Barttorvik (T-Rank) | Free | AdjO, AdjD, AdjT, AdjEM, Luck — **optional**, used only for cross-checking KenPom |
 
 ### CLI Flags
 
 | Flag | Effect |
 |------|--------|
-| `--no-torvik` | Skip Barttorvik |
-| `--no-kenpom` | Skip KenPom API |
+| `--no-torvik` | Skip Barttorvik (recommended — KenPom alone is sufficient) |
+| `--no-kenpom` | Skip KenPom API (falls back to Barttorvik only) |
 | `--no-vegas` | Skip all Vegas odds |
 | `--no-womens` | Skip women's championship odds |
 | `--kenpom-key KEY` | KenPom API key (or `KENPOM_API_KEY` env var) |
@@ -406,13 +408,13 @@ For a 16-seed ($0.10 base EV): blowout bonus ($14) is 99% of total value.
 | `--bracket PATH` | Custom bracket CSV path |
 | `--output PATH` | Custom output CSV path |
 
-### Blending
+### Blending (optional)
 
-When both Barttorvik and KenPom are available, the script averages their numeric stats (AdjO, AdjD, AdjT, AdjEM, ranks). KenPom luck is preferred when available. A `rating_source` column indicates `both`, `torvik`, or `kenpom` for each team.
+If you also enable Barttorvik (`--no-torvik` is NOT set), the script averages KenPom and Barttorvik numeric stats (AdjO, AdjD, AdjT, AdjEM, ranks). KenPom luck is preferred when available. A `rating_source` column indicates `both`, `torvik`, or `kenpom` for each team. **This is entirely optional** — KenPom alone is the recommended setup.
 
-### Disagreement Detection
+### Disagreement Detection (optional)
 
-When both sources disagree significantly (AdjEM gap ≥ 3.0 points, rank gap ≥ 20 spots), the script:
+When both Barttorvik and KenPom are present and disagree significantly (AdjEM gap ≥ 3.0 points, rank gap ≥ 20 spots), the script:
 1. Prints a formatted table showing both values and the gap
 2. Writes raw per-source values to the CSV (`torvik_rating`, `kenpom_rating`, etc.)
 3. The dashboard flags these teams with a 🔀 badge

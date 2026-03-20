@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcutta Auction Dashboard — Features</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #0a0e1a;
+      --card: #111827;
+      --border: #1e293b;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --accent: #22c55e;
+      --accent2: #6366f1;
+      --gold: #fbbf24;
+      --red: #ef4444;
+      --blue: #3b82f6;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 24px 60px;
+      background: linear-gradient(180deg, #0f172a 0%, var(--bg) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-emoji { font-size: 64px; margin-bottom: 16px; }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto 32px;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 36px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .grid-3 {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: #334155; }
+
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .highlight { color: var(--accent); font-weight: 600; }
+    .highlight-gold { color: var(--gold); font-weight: 600; }
+    .highlight-blue { color: var(--blue); font-weight: 600; }
+    .highlight-red { color: var(--red); font-weight: 600; }
+    .highlight-purple { color: var(--accent2); font-weight: 600; }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 auto;
+      max-width: 1100px;
+    }
+
+    .pipeline {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .pipe-stage {
+      flex: 1;
+      min-width: 160px;
+      padding: 20px 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      position: relative;
+      text-align: center;
+    }
+    .pipe-stage:first-child { border-radius: 12px 0 0 12px; }
+    .pipe-stage:last-child { border-radius: 0 12px 12px 0; }
+    .pipe-stage::after {
+      content: '→';
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: var(--muted);
+      z-index: 1;
+    }
+    .pipe-stage:last-child::after { content: ''; }
+    .pipe-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .pipe-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .pipe-detail {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 2px;
+    }
+    .tag-green { background: #052e16; color: #4ade80; border: 1px solid #166534; }
+    .tag-gold { background: #422006; color: #fbbf24; border: 1px solid #854d0e; }
+    .tag-orange { background: #451a03; color: #fb923c; border: 1px solid #9a3412; }
+    .tag-red { background: #450a0a; color: #f87171; border: 1px solid #991b1b; }
+    .tag-blue { background: #172554; color: #60a5fa; border: 1px solid #1e40af; }
+    .tag-gray { background: #1e293b; color: #94a3b8; border: 1px solid #334155; }
+
+    .footer {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .comparison > div {
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .before { background: #1c1917; border: 1px solid #44403c; }
+    .after { background: #052e16; border: 1px solid #166534; }
+    .comparison h4 { font-size: 14px; margin-bottom: 8px; }
+    .comparison p { font-size: 12px; color: var(--muted); }
+
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .pipeline { flex-direction: column; }
+      .pipe-stage { border-radius: 0 !important; }
+      .pipe-stage::after { display: none; }
+      .comparison { grid-template-columns: 1fr; }
+      .stats-row { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-emoji">🏀</div>
+    <h1>Calcutta Auction<br><span>Dashboard</span></h1>
+    <p>The unfair advantage for NCAA March Madness Calcutta auctions. Real-time analytics, ensemble probability modeling, and live AuctionPro integration — in a single HTML file.</p>
+
+    <div class="stats-row">
+      <div class="stat"><div class="stat-value">3</div><div class="stat-label">Probability Sources</div></div>
+      <div class="stat"><div class="stat-value">5</div><div class="stat-label">Profile Modifiers</div></div>
+      <div class="stat"><div class="stat-value">5,000</div><div class="stat-label">MC Simulations</div></div>
+      <div class="stat"><div class="stat-value">2s</div><div class="stat-label">Live Bid Latency</div></div>
+      <div class="stat"><div class="stat-value">36</div><div class="stat-label">Features</div></div>
+      <div class="stat"><div class="stat-value">0</div><div class="stat-label">Dependencies</div></div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- EV MODEL -->
+    <div class="section">
+      <div class="section-title">🧮 Ensemble EV Model</div>
+      <div class="section-sub">Three independent probability sources, blended into one number that tells you exactly what every team is worth.</div>
+
+      <div class="pipeline">
+        <div class="pipe-stage">
+          <div class="pipe-num">SOURCE 1</div>
+          <div class="pipe-title">Bracket Model</div>
+          <div class="pipe-detail">Logistic win prob on AdjEM<br>Opponent-aware paths<br>60/40 model vs historical</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-num">SOURCE 2</div>
+          <div class="pipe-title">KenPom Probs</div>
+          <div class="pipe-detail">1M-sim tournament model<br>Tempo-adjusted<br>Bracket-path-aware</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-num">SOURCE 3</div>
+          <div class="pipe-title">Vegas Odds</div>
+          <div class="pipe-detail">De-vigged futures<br>Sharp money + injury intel<br>Late-round anchor</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-num">BLEND</div>
+          <div class="pipe-title">Ensemble</div>
+          <div class="pipe-detail">KP 50% + Bracket 20%<br>+ Vegas 30%<br>Adapts to available data</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-num">ADJUST</div>
+          <div class="pipe-title">Profile Mods</div>
+          <div class="pipe-detail">5 checks stack multiplicatively<br>Concentrated in F4/Champ<br>±25% on deep runs</div>
+        </div>
+        <div class="pipe-stage" style="background: #052e16;">
+          <div class="pipe-num" style="color: #fbbf24;">OUTPUT</div>
+          <div class="pipe-title">$ EV</div>
+          <div class="pipe-detail">Round EVs + Bonuses<br>Max Bid = EV × 85%<br>Your edge in dollars</div>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top: 24px;">
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h3>Vegas Late-Round Anchoring</h3>
+          <p>Vegas only gives a championship number. Instead of spreading it evenly, <span class="highlight">56% of the adjustment concentrates in F4/Championship</span> where the real uncertainty lives. R64 barely moves.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔄</div>
+          <h3>Graceful Degradation</h3>
+          <p>Have all three sources? Full ensemble. Only Barttorvik? Bracket model still works. The dashboard <span class="highlight">adapts blending weights</span> to whatever data you have.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>Bayesian Pot Estimation</h3>
+          <p>Each sale implies a pot size based on that team's EV share. <span class="highlight">1-seed sales give more signal</span> than 16-seeds. 90% credible interval tightens as the auction progresses.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PROFILE MODIFIERS -->
+    <div class="section">
+      <div class="section-title">📋 KenPom Profile Intelligence</div>
+      <div class="section-sub">Five data-driven checks that separate real contenders from paper tigers. Based on 20+ years of tournament champion profiles.</div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-icon">🏆</div>
+          <h3>Championship Profile</h3>
+          <p>Top 25 in both offense AND defense. <span class="highlight-gold">22 of 23 champions since 2002</span> had this. Teams without it get penalized up to −15%.</p>
+          <div style="margin-top: 8px;">
+            <span class="tag tag-gold">+5% if qualified</span>
+            <span class="tag tag-red">−15% if major imbalance</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📐</div>
+          <h3>Trapezoid of Excellence</h3>
+          <p>High efficiency at moderate pace. Champions cluster here — extreme-tempo teams are <span class="highlight-red">more volatile</span> and matchup-dependent.</p>
+          <div style="margin-top: 8px;">
+            <span class="tag tag-green">+3% inside</span>
+            <span class="tag tag-orange">−5% extreme pace</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🍀</div>
+          <h3>Luck Discount</h3>
+          <p>Teams winning close games at unsustainable rates. Their record <span class="highlight-red">looks better than they are</span>. Regression is coming.</p>
+          <div style="margin-top: 8px;">
+            <span class="tag tag-red">−10% very lucky</span>
+            <span class="tag tag-green">+5% unlucky (undervalued)</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚖️</div>
+          <h3>Balance Check</h3>
+          <p>Both O and D rank in top 40 = <span class="highlight">tournament-proof</span>. Can win shootouts AND grind-it-out games. One-dimensional teams get flagged.</p>
+          <div style="margin-top: 8px;">
+            <span class="tag tag-green">+2% balanced</span>
+            <span class="tag tag-red">−8% extremely lopsided</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔀</div>
+          <h3>Source Disagreement</h3>
+          <p>When Barttorvik and KenPom disagree by 3+ AdjEM points or 20+ rank spots, the team is <span class="highlight-purple">flagged for investigation</span>. One model sees something the other doesn't.</p>
+          <div style="margin-top: 8px;">
+            <span class="tag tag-orange">⚠️ Flagged — no auto-adjust</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <div class="before">
+          <h4 style="color: #a8a29e;">❌ Without Profiles</h4>
+          <p>Alabama (AdjEM 22.5): EV $285<br>Treats all 4-seeds equally regardless of whether they're balanced contenders or volatile one-trick ponies.</p>
+        </div>
+        <div class="after">
+          <h4 style="color: #4ade80;">✅ With Profiles</h4>
+          <p>Alabama (lopsided O:#3/D:#67, lucky 6.5%, outside trapezoid): <span class="highlight-red">EV $208 (−27%)</span><br>Correctly identifies high variance and regression risk.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- BONUSES -->
+    <div class="section">
+      <div class="section-title">🎁 Bonus Payouts</div>
+      <div class="section-sub">Two bonus models that can transform a $3 team into a $17 value play.</div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">😵</div>
+          <h3>Biggest Blowout (Consolation Prize)</h3>
+          <p>Goes to the team that <span class="highlight-red">LOSES</span> by the largest margin in Round of 64. Uses softmax over expected margin² across all 32 games. <span class="highlight">16-seeds dominate</span> — Wagner gets 27% blowout probability ($14 bonus EV) vs $0.05 from round payouts.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">👩</div>
+          <h3>Women's Championship</h3>
+          <p>Automatically converts women's futures odds to de-vigged win probabilities and matches to men's bracket teams by school. <span class="highlight">South Carolina adds $29 bonus EV</span>. Most schools: $0. A few contenders: $3–17.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- LIVE AUCTION -->
+    <div class="section">
+      <div class="section-title">⚡ Live Auction Integration</div>
+      <div class="section-sub">Paste one script into AuctionPro's console. Sales, bids, and team changes flow into your dashboard in real-time.</div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">📡</div>
+          <h3>AuctionPro API Feed</h3>
+          <p>Polls <span class="mono" style="font-size: 11px; color: var(--accent);">items.json</span> every 3s for sales, <span class="mono" style="font-size: 11px; color: var(--accent);">current_item.json</span> every 2s for live bids. Auto-detects auction ID, auth token, and your user ID from cookies.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🟢</div>
+          <h3>LIVE Badge</h3>
+          <p>Green pulsing indicator shows <span class="highlight">current team + current bid amount</span> in real-time. Click to snap back to the action from wherever you are in the dashboard.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <h3>Smart Auto-Follow</h3>
+          <p>Dashboard follows the live auction automatically. But if you click away to scout a future team, <span class="highlight">it won't interrupt you</span>. Your bid input, selected team, and analysis stay locked until you click LIVE to re-attach.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔔</div>
+          <h3>Steal Alerts</h3>
+          <p>Flash notification when any team sells for <span class="highlight-red">&lt;60% of EV</span>. Green if you got the steal, red if someone else did. Persists across refreshes so you never miss one.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">👤</div>
+          <h3>Auto-Portfolio</h3>
+          <p>Your purchases are <span class="highlight">automatically added to your portfolio</span> based on your AuctionPro user ID. No manual "I bought this" clicking needed.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💾</div>
+          <h3>Crash-Proof</h3>
+          <p>Every state change saves to localStorage instantly. Browser crash, tab close, power outage — <span class="highlight">reopen and you're exactly where you left off</span>. Sold teams, portfolio, alerts, search, selected team, bid input — all persisted.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PORTFOLIO & STRATEGY -->
+    <div class="section">
+      <div class="section-title">📦 Portfolio Intelligence</div>
+      <div class="section-sub">Not just team-by-team analysis — full portfolio optimization with correlated tournament simulation.</div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">🎲</div>
+          <h3>Monte Carlo Simulation</h3>
+          <p><span class="highlight">5,000 full tournament simulations</span> with bracket-aware correlated outcomes. Two teams in the same region can't both reach the Final Four — the simulator knows this.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📈</div>
+          <h3>What-If Impact Analysis</h3>
+          <p>Before you bid, see how buying this team would change your portfolio's P(profit), P10, median, P90, max loss. Side-by-side <span class="highlight">"Before" vs "After" histograms</span>.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💡</div>
+          <h3>Smart Suggestions</h3>
+          <p>6-factor scoring: EV/dollar, region diversification, hedge value, market bias, Vegas signal, KenPom profile. Tags tell you why: <span class="tag tag-green">NEW RGN</span> <span class="tag tag-blue">VEGAS ↑</span> <span class="tag tag-gold">🏆 CHAMP</span> <span class="tag tag-orange">🍀 LUCKY</span></p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💰</div>
+          <h3>Budget Optimizer</h3>
+          <p>Given your remaining budget, <span class="highlight">greedy knapsack algorithm</span> finds the optimal set of teams to target. Penalizes region concentration, skips bad-value teams.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>Profit Distribution</h3>
+          <p>SVG histograms showing your <span class="highlight">full profit/loss distribution</span> from the MC simulation. Red bars for loss scenarios, green for profit. P(profit) centered below.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🗺️</div>
+          <h3>Region Diversification</h3>
+          <p>Tracks region exposure across your portfolio. <span class="highlight-red">Warns when 2+ teams could face each other</span> in the Elite 8. Suggestions engine penalizes concentration.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ANALYSIS TABS -->
+    <div class="section">
+      <div class="section-title">🔬 Six Analysis Views</div>
+      <div class="section-sub">Every angle covered, from per-team deep dives to full-bracket overviews.</div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>📊 Analysis</h3>
+          <p>Win %, max bid, breakeven round, bonus EV, profile badges, round-by-round probability bars with cumulative payouts.</p>
+        </div>
+        <div class="card">
+          <h3>📦 Impact</h3>
+          <p>What-if portfolio simulation. Before/after profit distributions, P(profit) delta, max loss change.</p>
+        </div>
+        <div class="card">
+          <h3>🏆 Rounds</h3>
+          <p>Payout breakdown by tournament round. EV contribution from each round.</p>
+        </div>
+        <div class="card">
+          <h3>🎰 Vegas</h3>
+          <p>All three probability sources side-by-side. Ensemble blend + disagreement table across all teams.</p>
+        </div>
+        <div class="card">
+          <h3>📋 Cheatsheet</h3>
+          <p>Pre-auction prep: region difficulty, value by seed, historical verdicts, Vegas picks, profile summaries.</p>
+        </div>
+        <div class="card">
+          <h3>🏅 Bracket</h3>
+          <p>Visual bracket with owned teams highlighted, matchup paths, regional conflicts, click-to-select.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- DATA PIPELINE -->
+    <div class="section">
+      <div class="section-title">🔧 Automated Data Pipeline</div>
+      <div class="section-sub">One Python script pulls everything. Blends sources, flags disagreements, handles name matching across databases.</div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>Barttorvik (Free)</h3>
+          <p>AdjO, AdjD, AdjT, AdjEM, Luck. No account needed. Auto-falls back from JSON to CSV if Cloudflare blocks.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📈</div>
+          <h3>KenPom API (Optional)</h3>
+          <p>Same stats plus tournament round probabilities. When both sources exist, stats are <span class="highlight">averaged with disagreements flagged</span>.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎰</div>
+          <h3>The Odds API (Free Tier)</h3>
+          <p>Men's AND women's championship futures from multiple sportsbooks. De-vigged and converted automatically.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔀</div>
+          <h3>Smart Blending</h3>
+          <p>Averages stats when both sources agree. When they disagree by 3+ AdjEM or 20+ rank spots: <span class="highlight-red">prints a formatted disagreement table</span> and flags teams in the dashboard.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px; padding: 20px; background: var(--card); border-radius: 12px; border: 1px solid var(--border);">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); line-height: 1.8;">
+          <span style="color: var(--accent);">$</span> python build_teams_csv.py<br>
+          <span style="color: var(--accent);">$</span> python build_teams_csv.py --no-torvik --kenpom-key YOUR_KEY<br>
+          <span style="color: var(--accent);">$</span> python build_teams_csv.py --no-kenpom --no-vegas<br>
+          <span style="color: var(--accent);">$</span> python build_teams_csv.py --year 2027 --output my_teams.csv
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- UX -->
+    <div class="section">
+      <div class="section-title">✨ Built for Auction Night</div>
+      <div class="section-sub">Every UX decision optimized for speed under pressure. Keyboard shortcuts, help tooltips, and zero setup.</div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-icon">⌨️</div>
+          <h3>Keyboard Shortcuts</h3>
+          <p><span class="mono" style="font-size: 11px;">/</span> search, <span class="mono" style="font-size: 11px;">B</span> bid, <span class="mono" style="font-size: 11px;">S</span> sell, <span class="mono" style="font-size: 11px;">M</span> mine, <span class="mono" style="font-size: 11px;">Z</span> undo, <span class="mono" style="font-size: 11px;">↑↓</span> navigate, <span class="mono" style="font-size: 11px;">1-6</span> tabs, <span class="mono" style="font-size: 11px;">Enter</span> record.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">❓</div>
+          <h3>Help Mode</h3>
+          <p>Toggle on → hover anything with a dashed outline → plain-English tooltip explains what it means and how to use it. 28+ tooltips.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎨</div>
+          <h3>Color-Coded Verdicts</h3>
+          <p>GREAT VALUE → GOOD VALUE → FAIR PRICE → OVERPAYING → TOO RICH. Visual bar shows bid position vs EV and max bid.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📥</div>
+          <h3>CSV Export</h3>
+          <p>One click exports everything: teams, EVs, prices, edges, P(profit), profile flags, adjustments. Timestamped file.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">↩️</div>
+          <h3>Undo + Unsell</h3>
+          <p>Undo last sale with Z, or unsell any specific team. Fix mistakes without resetting.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📄</div>
+          <h3>Zero Install</h3>
+          <p>Single HTML file. Double-click to open. React + Babel from CDN. No Node, no build step, no terminal.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SENSITIVITY -->
+    <div class="section">
+      <div class="section-title">💰 What Drives Value</div>
+      <div class="section-sub">Sensitivity analysis on a $5,000 pot. Know where your edge comes from.</div>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border);">
+              <th style="text-align: left; padding: 12px 8px; color: var(--muted);">Factor</th>
+              <th style="text-align: right; padding: 12px 8px; color: var(--muted);">1-Seed Impact</th>
+              <th style="text-align: right; padding: 12px 8px; color: var(--muted);">4-Seed</th>
+              <th style="text-align: right; padding: 12px 8px; color: var(--muted);">16-Seed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 10px 8px;">Championship prob model (KenPom vs seed-only)</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--accent);">±$125</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--accent);">±$22</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--muted);">~$0</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 10px 8px;">All red flags stacking (lopsided + lucky + no profile)</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--red);">−$200</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--red);">−$21</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--muted);">~$0</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 10px 8px;">Pot estimation (per $1K miss)</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--gold);">$174</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--gold);">$24</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--gold);">$3</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 10px 8px;">Vegas disagreement (+30% title)</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--blue);">+$151</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--blue);">+$13</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--muted);">~$0</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 10px 8px;">Women's bonus (South Carolina best case)</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono';">+$29</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono';">+$29</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono';">+$29</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 8px;">Blowout bonus (consolation to loser)</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--muted);">~$0</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--muted);">~$1</td>
+              <td style="text-align: right; padding: 10px 8px; font-family: 'JetBrains Mono'; color: var(--accent);">+$14</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>Single HTML file · No build step · No server · No accounts required</p>
+    <p style="margin-top: 8px;">Double-click <span class="mono" style="color: var(--accent);">calcutta_dashboard.html</span> and start winning.</p>
+  </div>
+
+</body>
+</html>

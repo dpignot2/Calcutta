@@ -1,0 +1,65 @@
+name,seed,region
+Duke,1,EAST
+Siena,16,EAST
+Ohio St.,8,EAST
+TCU,9,EAST
+St. John's,5,EAST
+Northern Iowa,12,EAST
+Kansas,4,EAST
+Cal Baptist,13,EAST
+Louisville,6,EAST
+South Florida,11,EAST
+Michigan St.,3,EAST
+North Dakota St.,14,EAST
+UCLA,7,EAST
+UCF,10,EAST
+UConn,2,EAST
+Furman,15,EAST
+Arizona,1,WEST
+Long Island,16,WEST
+Villanova,8,WEST
+Utah St.,9,WEST
+Wisconsin,5,WEST
+High Point,12,WEST
+Arkansas,4,WEST
+Hawaii,13,WEST
+BYU,6,WEST
+Texas,11,WEST
+Gonzaga,3,WEST
+Kennesaw St.,14,WEST
+Miami (FL),7,WEST
+Missouri,10,WEST
+Purdue,2,WEST
+Queens (N.C.),15,WEST
+Florida,1,SOUTH
+Prairie View A&M,16,SOUTH
+Clemson,8,SOUTH
+Iowa,9,SOUTH
+Vanderbilt,5,SOUTH
+McNeese,12,SOUTH
+Nebraska,4,SOUTH
+Troy,13,SOUTH
+North Carolina,6,SOUTH
+VCU,11,SOUTH
+Illinois,3,SOUTH
+Penn,14,SOUTH
+Saint Mary's,7,SOUTH
+Texas A&M,10,SOUTH
+Houston,2,SOUTH
+Idaho,15,SOUTH
+Michigan,1,MIDWEST
+UMBC,16,MIDWEST
+Georgia,8,MIDWEST
+Saint Louis,9,MIDWEST
+Texas Tech,5,MIDWEST
+Akron,12,MIDWEST
+Alabama,4,MIDWEST
+Hofstra,13,MIDWEST
+Tennessee,6,MIDWEST
+Miami (Ohio),11,MIDWEST
+Virginia,3,MIDWEST
+Wright St.,14,MIDWEST
+Kentucky,7,MIDWEST
+Santa Clara,10,MIDWEST
+Iowa St.,2,MIDWEST
+Tennessee St.,15,MIDWEST

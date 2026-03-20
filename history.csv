@@ -1,0 +1,257 @@
+year,team,seed,region,bidder,price_paid,rounds_won,payout_received
+2022,Gonzaga,1,WEST,Roma/Danny,769.0,2,241.3
+2022,Georgia St,16,WEST,JC,70.0,0,0
+2022,Boise St,8,WEST,Monahan,91.0,0,0
+2022,Memphis,9,WEST,Brad,83.0,1,90.49
+2022,UConn,5,WEST,Drent,235.0,0,0
+2022,New Mexico St,12,WEST,Rosko,78.0,1,90.49
+2022,Arkansas,4,WEST,Wyatt,215.0,3,512.76
+2022,Vermont,13,WEST,Koschak,100.0,0,0
+2022,Alabama,6,WEST,Koschak,80.0,0,0
+2022,Rutgers/Notre Dame,11,WEST,Drent,65.0,1,90.49
+2022,Texas Tech,3,WEST,Tanner,500.0,2,241.3
+2022,Montana St,14,WEST,David,29.0,0,0
+2022,Michigan State,7,WEST,Drent,102.0,1,90.49
+2022,Davidson,10,WEST,Donny,92.0,0,0
+2022,Duke,2,WEST,Kevin H,396.0,4,995.36
+2022,Cal St - Fullerton,15,WEST,Kevin H,20.0,0,0
+2022,Baylor,1,EAST,TK,475.0,1,90.49
+2022,Norfolk St,16,EAST,Brad,10.0,0,0
+2022,North Carolina,8,EAST,Tim,135.0,5,1719.26
+2022,Marquette,9,EAST,Brad,70.0,0,0
+2022,Saint Mary's,5,EAST,JC,93.0,1,90.49
+2022,Wyoming/Indiana,12,EAST,Drent,106.0,0,0
+2022,UCLA,4,EAST,Andrew M,480.0,2,241.3
+2022,Akron,13,EAST,Rosko,21.0,0,0
+2022,Texas,6,EAST,Justin,180.0,1,90.49
+2022,Virginia Tech,11,EAST,David,150.0,0,0
+2022,Purdue,3,EAST,Roma/Danny,306.0,2,241.3
+2022,Yale,14,EAST,Drent,22.0,0,0
+2022,Murray St,7,EAST,Koschak,70.0,1,90.49
+2022,San Francisco,10,EAST,John/TJ,66.0,0,0
+2022,Kentucky,2,EAST,Justin,855.0,0,0
+2022,Saint Peter's,15,EAST,Wyatt,38.0,3,512.76
+2022,Arizona,1,SOUTH,John/TJ,700.0,2,241.3
+2022,Wright St/Bryant,16,SOUTH,Brad,27.0,0,0
+2022,Seton Hall,8,SOUTH,Monahan,94.0,0,0
+2022,TCU,9,SOUTH,Brian C,53.0,1,90.49
+2022,Houston,5,SOUTH,Roma/Danny,220.0,3,512.76
+2022,UAB,12,SOUTH,Drent,89.0,0,0
+2022,Illinois,4,SOUTH,Tanner,260.0,1,90.49
+2022,Chattanooga,13,SOUTH,Joey,79.0,0,0
+2022,Colorado St,6,SOUTH,David,86.0,0,0
+2022,Michigan,11,SOUTH,Donny,65.0,2,241.3
+2022,Tennessee,3,SOUTH,TK,427.0,1,90.49
+2022,Longwood,14,SOUTH,Roney,51.0,0,0
+2022,Ohio St,7,SOUTH,Drent,100.0,1,90.49
+2022,Loyola-Chicago,10,SOUTH,Ricky,110.0,0,0
+2022,Villanova,2,SOUTH,Jay,516.0,4,995.36
+2022,Delaware,15,SOUTH,Wyatt,24.0,0,0
+2022,Kansas,1,MIDWEST,Tanner,860.0,6,2684.46
+2022,Texas So/Texas AM CC,16,MIDWEST,Jay,41.0,0,0
+2022,San Diego St,8,MIDWEST,Brian C,51.0,0,0
+2022,Creighton,9,MIDWEST,Rosko,66.0,1,90.49
+2022,Iowa,5,MIDWEST,Kevin B,486.0,0,0
+2022,Richmond,12,MIDWEST,Monahan,103.0,1,90.49
+2022,Providence,4,MIDWEST,JC,166.0,2,241.3
+2022,South Dakota St,13,MIDWEST,Donny,72.0,0,0
+2022,LSU,6,MIDWEST,Jay,127.0,0,0
+2022,Iowa St,11,MIDWEST,David,100.0,2,241.3
+2022,Wisconsin,3,MIDWEST,JC,224.0,1,90.49
+2022,Colgate,14,MIDWEST,Christian,46.0,0,0
+2022,USC,7,MIDWEST,David,117.0,0,0
+2022,Miami,10,MIDWEST,Brad,88.0,3,512.76
+2022,Auburn,2,MIDWEST,Justin,600.0,1,90.49
+2022,Jacksonville St,15,MIDWEST,Brad,15.0,0,0
+2023,Alabama,1,SOUTH,Tanner,1009.0,2,267.1
+2023,TXCC/SEMO,16,SOUTH,Justin,28.0,0,0
+2023,Maryland,8,SOUTH,Roma/Danny,76.0,1,100.16
+2023,West Virginia,9,SOUTH,David,120.0,0,0
+2023,San Diego St.,5,SOUTH,David,233.0,5,1903.09
+2023,Charleston,12,SOUTH,Roney,66.0,0,0
+2023,Virginia,4,SOUTH,Kevin H,210.0,0,0
+2023,Furman,13,SOUTH,Tanner,80.0,1,100.16
+2023,Creighton,6,SOUTH,Mosconi,275.0,3,567.59
+2023,NC State,11,SOUTH,Kevin H,75.0,0,0
+2023,Baylor,3,SOUTH,Justin,310.0,1,100.16
+2023,UCSB,14,SOUTH,David,22.0,0,0
+2023,Missouri,7,SOUTH,Drent/Jim,96.0,1,100.16
+2023,Utah St.,10,SOUTH,David,135.0,0,0
+2023,Arizona,2,SOUTH,Monahan,636.0,0,0
+2023,Princeton,15,SOUTH,Andrew M,17.0,2,267.1
+2023,Purdue,1,EAST,Kevin H,610.0,0,0
+2023,TX SO/FDU,16,EAST,Kevin H,57.0,1,100.16
+2023,Memphis,8,EAST,Tanner,173.0,0,0
+2023,FAU,9,EAST,Monahan,77.0,4,1101.79
+2023,Duke,5,EAST,Justin,406.0,1,100.16
+2023,Oral Roberts,12,EAST,David,61.0,0,0
+2023,Tennessee,4,EAST,David,302.0,2,267.1
+2023,Louisiana,13,EAST,Drent/Jim,35.0,0,0
+2023,Kentucky,6,EAST,Brian C,240.0,1,100.16
+2023,Providence,11,EAST,Roma/Danny,100.0,0,0
+2023,Kansas St.,3,EAST,David,306.0,3,567.59
+2023,Montana St.,14,EAST,Rosko,35.0,0,0
+2023,Michigan St.,7,EAST,David,130.0,2,267.1
+2023,USC,10,EAST,Wyatt,87.0,0,0
+2023,Marquette,2,EAST,John/TJ,553.0,1,100.16
+2023,Vermont,15,EAST,John/TJ,47.0,0,0
+2023,Houston,1,MIDWEST,Monahan,810.0,2,267.1
+2023,N. Kentucky,16,MIDWEST,Justin,37.0,0,0
+2023,Iowa,8,MIDWEST,David,90.0,0,0
+2023,Auburn,9,MIDWEST,Roma/Danny,125.0,1,100.16
+2023,Miami,5,MIDWEST,Donny,141.0,4,1101.79
+2023,Drake,12,MIDWEST,Drent/Jim,122.0,0,0
+2023,Indiana,4,MIDWEST,Roma/Danny,192.0,1,100.16
+2023,Kent St.,13,MIDWEST,Tanner,104.0,0,0
+2023,Iowa St.,6,MIDWEST,Justin,223.0,0,0
+2023,MSST/PITT,11,MIDWEST,Donny,96.0,1,100.16
+2023,Xavier,3,MIDWEST,John/TJ,288.0,2,267.1
+2023,Kennesaw St.,14,MIDWEST,Jay,26.0,0,0
+2023,Texas A&M,7,MIDWEST,Mosconi,162.0,0,0
+2023,Penn St.,10,MIDWEST,Rosko,100.0,1,100.16
+2023,Texas,2,MIDWEST,Andrew M,643.0,3,567.59
+2023,Colgate,15,MIDWEST,Wyatt,38.0,0,0
+2023,Kansas,1,WEST,Jay,723.0,1,100.16
+2023,Howard,16,WEST,Kevin B,37.0,0,0
+2023,Arkansas,8,WEST,David,137.0,2,267.1
+2023,Illinois,9,WEST,Roma/Danny,109.0,0,0
+2023,Saint Mary's,5,WEST,Wyatt,140.0,1,100.16
+2023,VCU,12,WEST,Roney,76.0,0,0
+2023,UConn,4,WEST,Justin,520.0,6,2971.49
+2023,Iona,13,WEST,David,40.0,0,0
+2023,TCU,6,WEST,Jay,185.0,1,100.16
+2023,ASU/NEV,11,WEST,Drent/Jim,64.0,0,0
+2023,Gonzaga,3,WEST,Mosconi,532.0,3,567.59
+2023,Grand Canyon,14,WEST,Jay,49.0,0,0
+2023,Northwestern,7,WEST,John/TJ,103.0,1,100.16
+2023,Boise St.,10,WEST,Mosconi,110.0,0,0
+2023,UCLA,2,WEST,Tanner,696.0,2,267.1
+2023,UNC-Asheville,15,WEST,Tanner,30.0,0,0
+2024,UConn,1,EAST,Justin,1000.0,6,2339.32
+2024,Stetson,16,EAST,Brad,53.0,0,0
+2024,FAU,8,EAST,Andrew M,90.0,0,0
+2024,Northwestern,9,EAST,Roma,49.0,1,87.31
+2024,San Diego St.,5,EAST,Wyatt,152.0,2,243.75
+2024,UAB,12,EAST,Jay,66.0,0,0
+2024,Auburn,4,EAST,TJ,310.0,0,0
+2024,Yale,13,EAST,Wyatt,64.0,1,87.31
+2024,BYU,6,EAST,Brian C,138.0,0,0
+2024,Duquesne,11,EAST,Brad,62.0,1,87.31
+2024,Illinois,3,EAST,Kevin B,305.0,3,505.7
+2024,Morehead St.,14,EAST,Daniel M,45.0,0,0
+2024,Washington St.,7,EAST,Roma,74.0,1,87.32
+2024,Drake,10,EAST,Wyatt,100.0,0,0
+2024,Iowa St.,2,EAST,Monahan,410.0,2,243.76
+2024,South Dakota St.,15,EAST,Jay,17.0,0,0
+2024,North Carolina,1,WEST,Roma,609.0,2,243.76
+2024,Howard/Wagner,16,WEST,Andrew M,50.0,0,0
+2024,Mississippi St.,8,WEST,David,89.0,0,0
+2024,Michigan St.,9,WEST,Daniel M,111.0,1,87.32
+2024,Saint Mary's,5,WEST,Kevin B,169.0,0,0
+2024,Grand Canyon,12,WEST,Daniel M,87.0,1,87.32
+2024,Alabama,4,WEST,Tim,339.0,4,913.18
+2024,Charleston,13,WEST,Roma,46.0,0,0
+2024,Clemson,6,WEST,Drent,110.0,3,505.7
+2024,New Mexico,11,WEST,Christian,116.0,0,0
+2024,Baylor,3,WEST,Kevin H,331.0,1,87.31
+2024,Colgate,14,WEST,Christian,55.0,0,0
+2024,Dayton,7,WEST,Kevin H,94.0,1,87.32
+2024,Nevada,10,WEST,Andrew M,72.0,0,0
+2024,Arizona,2,WEST,Mosconi,621.0,2,243.76
+2024,Long Beach St.,15,WEST,Brian C,29.0,0,0
+2024,Houston,1,SOUTH,Monahan,710.0,2,243.76
+2024,Longwood,16,SOUTH,Brad,51.0,0,0
+2024,Nebraska,8,SOUTH,Kevin H,112.0,0,0
+2024,Texas A&M,9,SOUTH,David,90.0,1,87.32
+2024,Wisconsin,5,SOUTH,Kevin H,141.0,0,0
+2024,James Madison,12,SOUTH,Daniel M,74.0,1,87.32
+2024,Duke,4,SOUTH,David,316.0,3,505.71
+2024,Vermont,13,SOUTH,Jacobson,48.0,0,0
+2024,Texas Tech,6,SOUTH,Jay,102.0,0,0
+2024,NC State,11,SOUTH,Christian,100.0,4,913.18
+2024,Kentucky,3,SOUTH,TJ,367.0,0,0
+2024,Oakland,14,SOUTH,Daniel M,27.0,1,87.32
+2024,Florida,7,SOUTH,Donny,134.0,0,0
+2024,Colorado/Boise St.,10,SOUTH,Daniel M,95.0,1,87.31
+2024,Marquette,2,SOUTH,John,405.0,2,243.75
+2024,Western Kentucky,15,SOUTH,Tim,50.0,0,0
+2024,Purdue,1,MIDWEST,Tim,881.0,5,1524.39
+2024,Grambling/Montana St.,16,MIDWEST,Brian C,32.0,0,0
+2024,Utah St.,8,MIDWEST,Roma,91.0,1,87.32
+2024,TCU,9,MIDWEST,Wyatt,100.0,0,0
+2024,Gonzaga,5,MIDWEST,Andrew M,240.0,2,243.76
+2024,McNeese,12,MIDWEST,Jacobson,80.0,0,0
+2024,Kansas,4,MIDWEST,Kevin H,205.0,1,87.32
+2024,Samford,13,MIDWEST,Daniel M,73.0,0,0
+2024,South Carolina,6,MIDWEST,Brian C,185.0,0,0
+2024,Oregon,11,MIDWEST,Drent,74.0,1,87.32
+2024,Creighton,3,MIDWEST,John,381.0,2,243.76
+2024,Akron,14,MIDWEST,Daniel M,36.0,0,0
+2024,Texas,7,MIDWEST,Mosconi,140.0,1,87.32
+2024,Virginia/Colorado St.,10,MIDWEST,Donny,82.0,0,0
+2024,Tennessee,2,MIDWEST,Drent,315.0,3,505.7
+2024,Saint Peter's,15,MIDWEST,Andrew M,42.0,0,0
+2025,Auburn,1,SOUTH,Tim,925.0,4,925.96
+2025,Alabama St/Saint Francis,16,SOUTH,Kevin H,23.0,0,0
+2025,Louisville*,8,SOUTH,Daniel M,111.0,0,0
+2025,Creighton*,9,SOUTH,Wyatt,78.0,1,88.54
+2025,Michigan*,5,SOUTH,Kevin H,215.0,2,247.17
+2025,UC San Diego*,12,SOUTH,Daniel M,80.0,0,0
+2025,Texas A&M,4,SOUTH,Andrew M,181.0,1,88.54
+2025,Yale,13,SOUTH,Roma,31.0,0,0
+2025,Ole Miss*,6,SOUTH,Brian C,120.0,2,247.17
+2025,UNC*/San Diego St.*,11,SOUTH,Kevin B,101.0,0,0
+2025,Iowa St.*,3,SOUTH,Monahan,292.0,1,88.54
+2025,Lipscomb,14,SOUTH,Kevin H,40.0,0,0
+2025,Marquette,7,SOUTH,Kevin B,141.0,0,0
+2025,New Mexico,10,SOUTH,Wyatt,84.0,1,88.54
+2025,Michigan St.*,2,SOUTH,Drent,412.0,3,512.78
+2025,Bryant,15,SOUTH,Daniel M,12.0,0,0
+2025,Florida,1,WEST,David,1005.0,6,2372.07
+2025,Norfolk St.,16,WEST,Kevin H,41.0,0,0
+2025,UConn*,8,WEST,Roma,141.0,1,88.54
+2025,Oklahoma*,9,WEST,Drent,51.0,0,0
+2025,Memphis,5,WEST,Jay,98.0,0,0
+2025,Colorado St.,12,WEST,Wyatt,104.0,1,88.54
+2025,Maryland*,4,WEST,TJ,298.0,2,247.17
+2025,Grand Canyon*,13,WEST,Justin,37.0,0,0
+2025,Missouri,6,WEST,David,170.0,0,0
+2025,Drake,11,WEST,Kevin B,75.0,1,88.54
+2025,Texas Tech,3,WEST,Andrew M,352.0,3,512.78
+2025,UNC Wilmington,14,WEST,Kevin H,49.0,0,0
+2025,Kansas,7,WEST,Roma,148.0,0,0
+2025,Arkansas,10,WEST,Jay,70.0,2,247.17
+2025,St. John's,2,WEST,Justin,420.0,1,88.54
+2025,Omaha,15,WEST,Drent,30.0,0,0
+2025,Duke*,1,EAST,Brian C,910.0,4,925.96
+2025,American/Mount St. Mary's,16,EAST,Kevin H,30.0,0,0
+2025,Mississippi St.*,8,EAST,Drent,75.0,0,0
+2025,Baylor*,9,EAST,Jay,80.0,1,88.54
+2025,Oregon*,5,EAST,Christian,195.0,1,88.54
+2025,Liberty*,12,EAST,Jay,53.0,0,0
+2025,Arizona,4,EAST,David,253.0,2,247.17
+2025,Akron,13,EAST,Drent,24.0,0,0
+2025,BYU,6,EAST,Daniel M,142.0,2,247.17
+2025,VCU,11,EAST,Mosconi,99.0,0,0
+2025,Wisconsin,3,EAST,Wyatt,296.0,1,88.54
+2025,Montana,14,EAST,Kevin H,32.0,0,0
+2025,Saint Mary's,7,EAST,Donny,131.0,1,88.54
+2025,Vanderbilt*,10,EAST,Andrew M,63.0,0,0
+2025,Alabama*,2,EAST,Kevin B,505.0,3,512.78
+2025,Robert Morris,15,EAST,Jay,25.0,0,0
+2025,Houston,1,MIDWEST,John,930.0,5,1545.72
+2025,SIU Edwardsville,16,MIDWEST,Kevin H,41.0,0,0
+2025,Gonzaga,8,MIDWEST,Donny,160.0,1,88.54
+2025,Georgia,9,MIDWEST,Christian,70.0,0,0
+2025,Clemson,5,MIDWEST,Kevin H,255.0,0,0
+2025,McNeese,12,MIDWEST,Donny,43.0,1,88.54
+2025,Purdue,4,MIDWEST,Roma,143.0,2,247.17
+2025,High Point*,13,MIDWEST,Kevin H,68.0,0,0
+2025,Illinois*,6,MIDWEST,Donny,175.0,1,88.54
+2025,Texas*/Xavier,11,MIDWEST,Mosconi,110.0,0,0
+2025,Kentucky*,3,MIDWEST,Christian,247.0,2,247.17
+2025,Troy,14,MIDWEST,Wyatt,46.0,0,0
+2025,UCLA*,7,MIDWEST,Daniel M,121.0,1,88.54
+2025,Utah St.,10,MIDWEST,Drent,52.0,0,0
+2025,Tennessee*,2,MIDWEST,Tim,456.0,3,512.78
+2025,Wofford,15,MIDWEST,Wyatt,40.0,0,0

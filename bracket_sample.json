@@ -1,0 +1,436 @@
+{
+  "_instructions": "Fill in team names and KenPom AdjEM ratings. Get ratings from kenpom.com right before your auction. Typical range: -15 (worst D1) to +35 (elite). You can also override pot_size and payouts here.",
+  "pot_size": 5000,
+  "payouts": {
+    "R64": 0.025,
+    "R32": 0.05,
+    "Sweet 16": 0.1,
+    "Elite 8": 0.15,
+    "Final Four": 0.225,
+    "Championship": 0.45
+  },
+  "regions": {
+    "South": [
+      {
+        "name": "Houston",
+        "seed": 1,
+        "rating": 29.5,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 500
+      },
+      {
+        "name": "Marquette",
+        "seed": 2,
+        "rating": 25.0,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 3500
+      },
+      {
+        "name": "Kentucky",
+        "seed": 3,
+        "rating": 22.5,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 8000,
+        "womens_vegas_odds": 4000
+      },
+      {
+        "name": "Duke",
+        "seed": 4,
+        "rating": 21.0,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 15000,
+        "womens_vegas_odds": 4000
+      },
+      {
+        "name": "Wisconsin",
+        "seed": 5,
+        "rating": 19.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Texas Tech",
+        "seed": 6,
+        "rating": 18.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Florida",
+        "seed": 7,
+        "rating": 16.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Nebraska",
+        "seed": 8,
+        "rating": 15.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Texas A&M",
+        "seed": 9,
+        "rating": 14.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Colorado St",
+        "seed": 10,
+        "rating": 13.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "NC State",
+        "seed": 11,
+        "rating": 12.0,
+        "womens_win_prob": 0.0,
+        "womens_vegas_odds": 2000
+      },
+      {
+        "name": "James Madison",
+        "seed": 12,
+        "rating": 10.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Vermont",
+        "seed": 13,
+        "rating": 6.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Oakland",
+        "seed": 14,
+        "rating": 4.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "W Kentucky",
+        "seed": 15,
+        "rating": 1.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Longwood",
+        "seed": 16,
+        "rating": -4.0,
+        "womens_win_prob": 0.0
+      }
+    ],
+    "East": [
+      {
+        "name": "UConn",
+        "seed": 1,
+        "rating": 32.0,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 200,
+        "womens_vegas_odds": 500
+      },
+      {
+        "name": "Iowa St",
+        "seed": 2,
+        "rating": 24.5,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 4000,
+        "womens_vegas_odds": 800
+      },
+      {
+        "name": "Illinois",
+        "seed": 3,
+        "rating": 23.0,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 8000
+      },
+      {
+        "name": "Auburn",
+        "seed": 4,
+        "rating": 21.5,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 12000
+      },
+      {
+        "name": "San Diego St",
+        "seed": 5,
+        "rating": 19.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "BYU",
+        "seed": 6,
+        "rating": 17.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Washington St",
+        "seed": 7,
+        "rating": 16.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "FAU",
+        "seed": 8,
+        "rating": 15.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Northwestern",
+        "seed": 9,
+        "rating": 14.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Drake",
+        "seed": 10,
+        "rating": 12.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Duquesne",
+        "seed": 11,
+        "rating": 11.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Richmond",
+        "seed": 12,
+        "rating": 9.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Morehead St",
+        "seed": 13,
+        "rating": 5.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "South Dakota St",
+        "seed": 14,
+        "rating": 3.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Stony Brook",
+        "seed": 15,
+        "rating": 0.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Wagner",
+        "seed": 16,
+        "rating": -5.0,
+        "womens_win_prob": 0.0
+      }
+    ],
+    "Midwest": [
+      {
+        "name": "Purdue",
+        "seed": 1,
+        "rating": 30.0,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 450
+      },
+      {
+        "name": "Tennessee",
+        "seed": 2,
+        "rating": 26.0,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 2500,
+        "womens_vegas_odds": 2500
+      },
+      {
+        "name": "Creighton",
+        "seed": 3,
+        "rating": 23.5,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 6500
+      },
+      {
+        "name": "Kansas",
+        "seed": 4,
+        "rating": 22.0,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 15000
+      },
+      {
+        "name": "Gonzaga",
+        "seed": 5,
+        "rating": 20.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "South Carolina",
+        "seed": 6,
+        "rating": 18.5,
+        "womens_win_prob": 0.0,
+        "womens_vegas_odds": 250
+      },
+      {
+        "name": "Texas",
+        "seed": 7,
+        "rating": 17.0,
+        "womens_win_prob": 0.0,
+        "womens_vegas_odds": 1500
+      },
+      {
+        "name": "Utah St",
+        "seed": 8,
+        "rating": 15.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "TCU",
+        "seed": 9,
+        "rating": 14.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Colorado",
+        "seed": 10,
+        "rating": 13.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Oregon",
+        "seed": 11,
+        "rating": 12.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "McNeese",
+        "seed": 12,
+        "rating": 10.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Samford",
+        "seed": 13,
+        "rating": 5.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Akron",
+        "seed": 14,
+        "rating": 3.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Montana St",
+        "seed": 15,
+        "rating": 0.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Grambling",
+        "seed": 16,
+        "rating": -6.0,
+        "womens_win_prob": 0.0
+      }
+    ],
+    "West": [
+      {
+        "name": "North Carolina",
+        "seed": 1,
+        "rating": 28.5,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 900,
+        "womens_vegas_odds": 5000
+      },
+      {
+        "name": "Arizona",
+        "seed": 2,
+        "rating": 27.0,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 2000
+      },
+      {
+        "name": "Baylor",
+        "seed": 3,
+        "rating": 24.0,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 6000,
+        "womens_vegas_odds": 2500
+      },
+      {
+        "name": "Alabama",
+        "seed": 4,
+        "rating": 22.5,
+        "womens_win_prob": 0.0,
+        "vegas_odds": 12000
+      },
+      {
+        "name": "Saint Mary's",
+        "seed": 5,
+        "rating": 20.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Clemson",
+        "seed": 6,
+        "rating": 19.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Dayton",
+        "seed": 7,
+        "rating": 17.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Mississippi St",
+        "seed": 8,
+        "rating": 16.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Michigan St",
+        "seed": 9,
+        "rating": 15.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Nevada",
+        "seed": 10,
+        "rating": 14.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "New Mexico",
+        "seed": 11,
+        "rating": 13.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Grand Canyon",
+        "seed": 12,
+        "rating": 11.0,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Charleston",
+        "seed": 13,
+        "rating": 6.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Colgate",
+        "seed": 14,
+        "rating": 4.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Long Beach St",
+        "seed": 15,
+        "rating": 1.5,
+        "womens_win_prob": 0.0
+      },
+      {
+        "name": "Howard",
+        "seed": 16,
+        "rating": -3.5,
+        "womens_win_prob": 0.0
+      }
+    ]
+  },
+  "bonuses": {
+    "womens_champ": 0.02,
+    "biggest_blowout": 0.01
+  }
+}

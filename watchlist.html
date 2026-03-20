@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Calcutta Watchlist</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { background: #080c14; }
+    #root { width: 100%; min-height: 100vh; }
+    select { -webkit-appearance: none; appearance: none; }
+    input, select { font-size: 16px !important; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+  <script>window.onerror=function(m,u,l,c,e){document.getElementById('root').innerHTML='<div style="color:#ef4444;padding:20px;font-size:14px"><h2>Error</h2><p>'+m+'</p><pre style="white-space:pre-wrap">'+(e&&e.stack||'')+'</pre></div>';return false;};</script>
+  <script type="text/babel">
+const{useState,useMemo}=React;
+const JAY_POT=11281,JAY_FRACS=[.0075,.0134,.0225,.035,.0525,.07];
+const DANNY_POT=7671,DANNY_FRACS=[.0075,.013,.0246,.035,.0525,.07];
+function bT(pot,fr){const t=[0];let c=0;for(let i=0;i<6;i++){c+=pot*fr[i];t.push(c);}return t;}
+const JT=bT(JAY_POT,JAY_FRACS),DT=bT(DANNY_POT,DANNY_FRACS);
+const RDS=["R64","R32","S16","E8","F4","🏆"];
+const SCH={
+"TCU":{opp:"Ohio St.",day:"Thu 3/19",time:"11:15 AM",ch:"CBS",site:"Greenville"},
+"Nebraska":{opp:"Troy",day:"Thu 3/19",time:"11:40 AM",ch:"truTV",site:"OKC"},
+"Louisville":{opp:"South Florida",day:"Thu 3/19",time:"12:30 PM",ch:"TNT",site:"Buffalo"},
+"Wisconsin":{opp:"High Point",day:"Thu 3/19",time:"12:50 PM",ch:"TBS",site:"Portland"},
+"North Carolina":{opp:"VCU",day:"Thu 3/19",time:"5:50 PM",ch:"TNT",site:"Greenville"},
+"Saint Mary's":{opp:"Texas A&M",day:"Thu 3/19",time:"6:35 PM",ch:"truTV",site:"OKC"},
+"Georgia":{opp:"Saint Louis",day:"Thu 3/19",time:"8:45 PM",ch:"CBS",site:"Buffalo"},
+"Kentucky":{opp:"Santa Clara",day:"Fri 3/20",time:"11:15 AM",ch:"CBS",site:"St. Louis"},
+"Virginia":{opp:"Wright St.",day:"Fri 3/20",time:"12:50 PM",ch:"TBS",site:"Philly"},
+"Villanova":{opp:"Utah St.",day:"Fri 3/20",time:"3:10 PM",ch:"TNT",site:"San Diego"},
+"St. John's":{opp:"Northern Iowa",day:"Fri 3/20",time:"6:10 PM",ch:"CBS",site:"San Diego"},
+"Clemson":{opp:"Iowa",day:"Fri 3/20",time:"5:50 PM",ch:"TNT",site:"Tampa"},
+"Iowa":{opp:"Clemson",day:"Fri 3/20",time:"5:50 PM",ch:"TNT",site:"Tampa"},
+"Wright St.":{opp:"Virginia",day:"Fri 3/20",time:"12:50 PM",ch:"TBS",site:"Philly"},
+};
+const CHC={CBS:"#3b82f6",TBS:"#22c55e",TNT:"#ef4444",truTV:"#a855f7"};
+const P=[
+{n:"Nebraska",s:4,r:"S",a:"Jay",sh:.5,c:168,t:JT},
+{n:"Virginia",s:3,r:"MW",a:"Jay",sh:.5,c:287,t:JT},
+{n:"Saint Mary's",s:7,r:"S",a:"Jay",sh:.5,c:72,t:JT},
+{n:"North Carolina",s:6,r:"S",a:"Jay",sh:1,c:98,t:JT},
+{n:"Clemson",s:8,r:"S",a:"Jay",sh:.5,c:49,t:JT},
+{n:"Villanova",s:8,r:"W",a:"Jay",sh:1,c:55,t:JT},
+{n:"Wisconsin",s:5,r:"W",a:"Jay",sh:.5,c:172,t:JT},
+{n:"TCU",s:9,r:"E",a:"Jay",sh:1,c:60,t:JT},
+{n:"Georgia",s:8,r:"MW",a:"Jay",sh:1,c:91,t:JT},
+{n:"Louisville",s:6,r:"E",a:"Danny",sh:1,c:174,t:DT},
+{n:"St. John's",s:5,r:"E",a:"Danny",sh:1,c:175,t:DT},
+{n:"Iowa",s:9,r:"S",a:"Danny",sh:1,c:63,t:DT},
+{n:"Wright St.",s:14,r:"MW",a:"Danny",sh:1,c:9,t:DT},
+{n:"Kentucky",s:7,r:"MW",a:"Danny",sh:1,c:51,t:DT},
+];
+const STS=[
+{v:"alive_0",l:"⬜ R64 next",w:0,al:true},{v:"alive_1",l:"✅ Won R64",w:1,al:true},
+{v:"alive_2",l:"✅ Won R32",w:2,al:true},{v:"alive_3",l:"✅ Won S16",w:3,al:true},
+{v:"alive_4",l:"✅ Won E8",w:4,al:true},{v:"alive_5",l:"✅ Won F4",w:5,al:true},
+{v:"out_0",l:"❌ Lost R64",w:0,al:false},{v:"out_1",l:"❌ Lost R32",w:1,al:false},
+{v:"out_2",l:"❌ Lost S16",w:2,al:false},{v:"out_3",l:"❌ Lost E8",w:3,al:false},
+{v:"out_4",l:"❌ Lost F4",w:4,al:false},{v:"out_5",l:"❌ Lost Final",w:5,al:false},
+{v:"champ",l:"🏆 Champ!",w:6,al:false},
+];
+const fm=n=>"$"+Math.abs(Math.round(n)).toLocaleString();
+const seedC=s=>s<=2?"#3b82f6":s<=4?"#8b5cf6":s<=6?"#06b6d4":s<=8?"#10b981":s<=12?"#f59e0b":"#6b7280";
+const aucC=a=>a==="Jay"?"#818cf8":"#f59e0b";
+
+function Watchlist(){
+  const[sts,setSts]=useState(()=>{
+    try{const s=localStorage.getItem("wl_sts");if(s)return JSON.parse(s);}catch(e){}
+    const o={};P.forEach(t=>o[t.n]="alive_0");return o;
+  });
+  const upSts=(n,v)=>{setSts(p=>{const x={...p,[n]:v};try{localStorage.setItem("wl_sts",JSON.stringify(x));}catch(e){}return x;});};
+  const opps=useMemo(()=>{const o={};P.forEach(t=>{o[t.n]=SCH[t.n]?.opp||"";});return o;},[]);
+
+  const data=useMemo(()=>P.map(t=>{
+    const st=STS.find(s=>s.v===sts[t.n])||STS[0];
+    const mc=t.c*t.sh,col=t.t[st.w]*t.sh;
+    const np=st.al&&st.w<6?(t.t[st.w+1]-t.t[st.w])*t.sh:0;
+    const tiw=st.al&&st.w<6?t.t[st.w+1]*t.sh:col;
+    return{...t,st,mc,col,np,tiw,pnl:col-mc,piw:tiw-mc,opp:opps[t.n]||""};
+  }),[sts,opps]);
+
+  const h2h=useMemo(()=>{
+    const res=[],al=data.filter(t=>t.st.al),seen=new Set();
+    for(const a of al){if(!a.opp)continue;
+      const b=al.find(x=>x.n!==a.n&&(x.n===a.opp||a.opp===x.n));
+      if(!b)continue;const k=[a.n,b.n].sort().join("|");
+      if(seen.has(k))continue;seen.add(k);
+      res.push({a,b,ag:a.np,bg:b.np,net:Math.abs(a.np-b.np),pref:a.np>b.np?a.n:b.np>a.np?b.n:"Even"});
+    }return res;
+  },[data]);
+
+  function sm(f){const d=f?data.filter(f):data;const inv=d.reduce((s,t)=>s+t.mc,0),col=d.reduce((s,t)=>s+t.col,0);
+    return{inv,col,pnl:col-inv,al:d.filter(t=>t.st.al).length,tot:d.length,up:d.filter(t=>t.st.al).reduce((s,t)=>s+t.np,0)};}
+  const sA=sm(),sJ=sm(t=>t.a==="Jay"),sD=sm(t=>t.a==="Danny");
+  const pT=s=>{const[t,ap]=s.split(" ");const[h,m]=t.split(":").map(Number);return(ap==="PM"&&h!==12?h+12:h===12&&ap==="AM"?0:h)*60+m;};
+  const alive=data.filter(t=>t.st.al).sort((a,b)=>{const sa=SCH[a.n],sb=SCH[b.n];if(sa&&sb){if(sa.day!==sb.day)return sa.day<sb.day?-1:1;return pT(sa.time)-pT(sb.time);}return b.np-a.np;});
+  const elim=data.filter(t=>!t.st.al).sort((a,b)=>b.col-a.col);
+  const cd={background:"#111827",borderRadius:12,padding:"12px 14px",marginBottom:8};
+  const ss={background:"#0f172a",color:"#94a3b8",border:"1px solid #1e293b",borderRadius:8,padding:"10px 12px",fontSize:16,fontWeight:600,width:"100%",cursor:"pointer"};
+
+  return(
+    <div style={{minHeight:"100vh",background:"#080c14",color:"#e2e8f0",padding:"env(safe-area-inset-top, 16px) 12px 40px",maxWidth:600,margin:"0 auto"}}>
+      <div style={{textAlign:"center",marginBottom:20,paddingTop:8}}>
+        <div style={{fontSize:24,fontWeight:800}}>🏀 Watchlist</div>
+        <div style={{fontSize:12,color:"#334155",marginTop:2}}>Jay {fm(JAY_POT)} · Danny {fm(DANNY_POT)} · 14 teams</div>
+      </div>
+
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6,marginBottom:6}}>
+        {[{l:"Invested",v:fm(sA.inv),c:"#e2e8f0"},{l:"Collected",v:fm(sA.col),c:sA.col>0?"#22c55e":"#334155"},{l:"P&L",v:(sA.pnl>=0?"+":"-")+fm(sA.pnl),c:sA.pnl>=0?"#22c55e":"#ef4444"}].map(x=>(
+          <div key={x.l} style={{...cd,textAlign:"center"}}><div style={{fontSize:11,color:"#475569",fontWeight:600}}>{x.l}</div><div style={{fontSize:22,fontWeight:800,color:x.c}}>{x.v}</div></div>
+        ))}
+      </div>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6,marginBottom:16}}>
+        <div style={{...cd,textAlign:"center"}}><div style={{fontSize:11,color:"#475569",fontWeight:600}}>ALIVE</div><div style={{fontSize:22,fontWeight:800,color:"#3b82f6"}}>{sA.al}<span style={{fontSize:14,color:"#475569"}}>/{sA.tot}</span></div></div>
+        <div style={{...cd,textAlign:"center"}}><div style={{fontSize:11,color:"#475569",fontWeight:600}}>NEXT WIN $</div><div style={{fontSize:22,fontWeight:800,color:"#f59e0b"}}>+{fm(sA.up)}</div></div>
+      </div>
+
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6,marginBottom:20}}>
+        {[{l:"Jay",c:"#818cf8",s:sJ},{l:"Danny",c:"#f59e0b",s:sD}].map(x=>(
+          <div key={x.l} style={{...cd,borderLeft:"3px solid "+x.c}}>
+            <div style={{fontSize:12,fontWeight:700,color:x.c,marginBottom:4}}>{x.l} <span style={{color:"#334155",fontWeight:400}}>{x.s.al}/{x.s.tot}</span></div>
+            <div style={{display:"flex",justifyContent:"space-between",fontSize:13}}><span style={{color:"#64748b"}}>P&L</span><span style={{fontWeight:700,color:x.s.pnl>=0?"#22c55e":"#ef4444"}}>{x.s.pnl>=0?"+":"-"}{fm(x.s.pnl)}</span></div>
+            <div style={{display:"flex",justifyContent:"space-between",fontSize:13}}><span style={{color:"#64748b"}}>Next $</span><span style={{fontWeight:700,color:"#f59e0b"}}>+{fm(x.s.up)}</span></div>
+          </div>
+        ))}
+      </div>
+
+      {h2h.map((h,i)=>{const sc=SCH[h.a.n];return(
+        <div key={i} style={{background:"#1a0e0e",border:"1px solid #ef444430",borderRadius:14,padding:16,marginBottom:12}}>
+          <div style={{textAlign:"center",marginBottom:4}}><span style={{fontSize:12,fontWeight:700,color:"#ef4444"}}>⚔️ YOUR TEAMS PLAY EACH OTHER</span></div>
+          {sc&&<div style={{textAlign:"center",marginBottom:10}}>
+            <span style={{fontSize:12,color:"#475569"}}>{sc.day} {sc.time} </span>
+            <span style={{fontSize:13,fontWeight:800,color:CHC[sc.ch],padding:"2px 8px",background:CHC[sc.ch]+"20",borderRadius:4}}>{sc.ch}</span>
+            <span style={{fontSize:12,color:"#334155",marginLeft:6}}>{sc.site}</span>
+          </div>}
+          <div style={{display:"grid",gridTemplateColumns:"1fr auto 1fr",gap:8,alignItems:"center",textAlign:"center"}}>
+            <div>
+              <div style={{fontSize:12,color:"#64748b"}}>If <span style={{color:aucC(h.a.a)}}>{h.a.n}</span></div>
+              <div style={{fontSize:28,fontWeight:800,color:"#22c55e"}}>+{fm(h.ag)}</div>
+              <div style={{fontSize:11,color:aucC(h.a.a)}}>{h.a.a} {h.a.sh<1?Math.round(h.a.sh*100)+"%":"full"}</div>
+            </div>
+            <div>
+              <div style={{width:1,height:40,background:"#1e293b",margin:"0 auto 6px"}}/>
+              <div style={{fontSize:10,color:"#475569"}}>GUARANTEED</div>
+              <div style={{fontSize:20,fontWeight:800,color:"#22c55e"}}>+{fm(Math.min(h.ag,h.bg))}</div>
+              <div style={{fontSize:10,color:"#475569",marginTop:4}}>ROOT FOR</div>
+              <div style={{fontSize:14,fontWeight:700,color:"#f59e0b"}}>{h.pref==="Even"?"Either":h.pref}</div>
+              {h.net>0&&<div style={{fontSize:11,color:"#475569"}}>+{fm(h.net)} extra</div>}
+            </div>
+            <div>
+              <div style={{fontSize:12,color:"#64748b"}}>If <span style={{color:aucC(h.b.a)}}>{h.b.n}</span></div>
+              <div style={{fontSize:28,fontWeight:800,color:"#22c55e"}}>+{fm(h.bg)}</div>
+              <div style={{fontSize:11,color:aucC(h.b.a)}}>{h.b.a} {h.b.sh<1?Math.round(h.b.sh*100)+"%":"full"}</div>
+            </div>
+          </div>
+        </div>
+      );})}
+
+      {alive.length>0&&<div style={{marginBottom:16}}>
+        <div style={{fontSize:15,fontWeight:700,color:"#22c55e",marginBottom:8}}>🟢 ALIVE ({alive.length})</div>
+        {alive.map((t,idx)=>{const sc=SCH[t.n];const prev=idx>0?SCH[alive[idx-1].n]:null;const showDay=sc&&(!prev||prev.day!==sc.day);
+          return(<div key={t.n}>
+            {showDay&&<div style={{fontSize:13,fontWeight:700,color:"#64748b",margin:idx>0?"16px 0 8px":"0 0 8px",padding:"4px 0",borderBottom:"1px solid #1e293b"}}>📅 {sc.day==="Thu 3/19"?"THURSDAY Mar 19":"FRIDAY Mar 20"}</div>}
+            <div style={{...cd,border:"1px solid #22c55e15"}}>
+              <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
+                <span style={{width:32,height:32,borderRadius:16,background:seedC(t.s),display:"flex",alignItems:"center",justifyContent:"center",fontSize:15,fontWeight:800,flexShrink:0}}>{t.s}</span>
+                <div style={{flex:1}}>
+                  <div style={{fontSize:18,fontWeight:700}}>{t.n}</div>
+                  <div style={{display:"flex",gap:6,alignItems:"center",marginTop:2}}>
+                    <span style={{fontSize:12,padding:"1px 6px",borderRadius:4,background:aucC(t.a)+"20",color:aucC(t.a),fontWeight:600}}>{t.a}</span>
+                    {t.sh<1&&<span style={{fontSize:12,color:"#64748b"}}>{Math.round(t.sh*100)}%</span>}
+                    <span style={{fontSize:12,color:"#334155"}}>{t.r}</span>
+                  </div>
+                </div>
+              </div>
+              {sc&&<div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10,padding:"8px 10px",background:"#0f172a",borderRadius:8}}>
+                <span style={{fontSize:14,color:"#94a3b8",fontWeight:600}}>vs {t.opp}</span>
+                <span style={{marginLeft:"auto",fontSize:13,color:"#64748b"}}>{sc.time}</span>
+                <span style={{fontSize:13,fontWeight:800,color:CHC[sc.ch],padding:"3px 10px",background:CHC[sc.ch]+"18",borderRadius:6}}>{sc.ch}</span>
+              </div>}
+              <select value={sts[t.n]} onChange={e=>upSts(t.n,e.target.value)} style={{...ss,color:t.st.al?"#22c55e":"#ef4444",marginBottom:10}}>
+                {STS.map(s=><option key={s.v} value={s.v}>{s.l}</option>)}
+              </select>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:8}}>
+                <div style={{textAlign:"center",padding:"8px 0",background:"#0f172a",borderRadius:8}}>
+                  <div style={{fontSize:11,color:"#475569"}}>COLLECTED</div>
+                  <div style={{fontSize:18,fontWeight:700,color:t.col>0?"#22c55e":"#334155"}}>{fm(t.col)}</div>
+                </div>
+                <div style={{textAlign:"center",padding:"8px 0",background:"#0f172a",borderRadius:8}}>
+                  <div style={{fontSize:11,color:"#475569"}}>WIN NEXT</div>
+                  <div style={{fontSize:18,fontWeight:800,color:"#f59e0b"}}>+{fm(t.np)}</div>
+                </div>
+                <div style={{textAlign:"center",padding:"8px 0",background:"#0f172a",borderRadius:8}}>
+                  <div style={{fontSize:11,color:"#475569"}}>NET AFTER</div>
+                  <div style={{fontSize:18,fontWeight:700,color:t.piw>=0?"#22c55e":"#ef4444"}}>{t.piw>=0?"+":"-"}{fm(t.piw)}</div>
+                </div>
+              </div>
+              <div style={{display:"flex",gap:3}}>
+                {RDS.map((rn,ri)=>{const won=ri<t.st.w,cur=ri===t.st.w;return(
+                  <div key={rn} style={{flex:1,textAlign:"center"}}>
+                    <div style={{height:6,borderRadius:3,background:won?"#22c55e":cur?"#f59e0b30":"#0f172a",border:cur?"2px solid #f59e0b":"none"}}/>
+                    <div style={{fontSize:10,color:won?"#22c55e":cur?"#f59e0b":"#1e293b",marginTop:2,fontWeight:600}}>{rn}</div>
+                  </div>
+                );})}
+              </div>
+            </div>
+          </div>);
+        })}
+      </div>}
+
+      {elim.length>0&&<div>
+        <div style={{fontSize:15,fontWeight:700,color:"#475569",marginBottom:8}}>FINISHED ({elim.length})</div>
+        {elim.map(t=>(
+          <div key={t.n} style={{...cd,opacity:t.st.v==="champ"?1:.5,border:t.st.v==="champ"?"1px solid #f59e0b40":"none"}}>
+            <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
+              <span style={{width:28,height:28,borderRadius:14,background:seedC(t.s),display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,fontWeight:800}}>{t.s}</span>
+              <div style={{flex:1}}>
+                <div style={{fontSize:16,fontWeight:600,color:t.st.v==="champ"?"#f59e0b":"#64748b"}}>{t.st.v==="champ"&&"🏆 "}{t.n}</div>
+                <div style={{fontSize:11,color:aucC(t.a)}}>{t.a} {t.sh<1?Math.round(t.sh*100)+"%":""}</div>
+              </div>
+              <div style={{textAlign:"right"}}>
+                <div style={{fontSize:16,fontWeight:700,color:t.col>0?"#22c55e":"#334155"}}>{fm(t.col)}</div>
+                <div style={{fontSize:14,fontWeight:600,color:t.pnl>=0?"#22c55e":"#ef4444"}}>{t.pnl>=0?"+":"-"}{fm(t.pnl)}</div>
+              </div>
+            </div>
+            <select value={sts[t.n]} onChange={e=>upSts(t.n,e.target.value)} style={{...ss,color:t.st.v==="champ"?"#f59e0b":"#ef4444"}}>
+              {STS.map(s=><option key={s.v} value={s.v}>{s.l}</option>)}
+            </select>
+          </div>
+        ))}
+      </div>}
+
+      <div style={{marginTop:24,fontSize:11,color:"#1e293b",textAlign:"center",lineHeight:1.8,paddingBottom:"env(safe-area-inset-bottom, 16px)"}}>
+        Jay R64: {fm(JT[1])} · Champ: {fm(JT[6])}<br/>Danny R64: {fm(DT[1])} · Champ: {fm(DT[6])}
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(Watchlist));
+  </script>
+</body>
+</html>

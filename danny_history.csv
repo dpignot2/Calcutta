@@ -1,0 +1,193 @@
+year,team,seed,price_paid,rounds_won,payout_received,bidder
+2023,Alabama,1,215.0,2,80.02,Jensen
+2023,TAMU-CC/SEMO,16,18.0,0,0,Brakke
+2023,Maryland,8,33.0,1,30.01,Mocker Bros
+2023,West Virginia,9,36.0,0,0,David
+2023,San Diego St.,5,60.0,5,570.14,David
+2023,Charleston,12,18.0,0,0,Jimmer
+2023,Virginia,4,55.0,0,0,Matt
+2023,Furman,13,21.0,1,30.01,Danny
+2023,Creighton,6,102.0,3,170.04,Jensen
+2023,NC State,11,17.0,0,0,Danny
+2023,Baylor,3,107.0,1,30.01,Josh
+2023,UCSB,14,13.0,0,0,David
+2023,Missouri,7,27.0,1,30.01,Chase
+2023,Utah St.,10,33.0,0,0,Trennon
+2023,Arizona,2,207.0,0,0,Jordan
+2023,Princeton,15,15.0,2,80.02,David
+2023,Purdue,1,191.0,0,0,Matt
+2023,Texas Southern/FDU,16,10.0,1,30.01,Trennon
+2023,Memphis,8,44.0,0,0,Jensen
+2023,Florida Atlantic,9,35.0,4,330.08,David
+2023,Duke,5,227.0,1,30.01,Mocker Bros
+2023,Oral Roberts,12,33.0,0,0,Trennon
+2023,Tennessee,4,37.0,2,80.02,David
+2023,Louisiana,13,7.0,0,0,Jimmer
+2023,Kentucky,6,72.0,1,30.01,Danny
+2023,Providence,11,32.0,0,0,Tyler
+2023,Kansas St.,3,84.0,3,170.04,Trennon
+2023,Montana St.,14,14.0,0,0,David
+2023,Michigan St.,7,19.0,2,80.02,Jensen
+2023,USC,10,20.0,0,0,Faz
+2023,Marquette,2,165.0,1,30.01,Timmy
+2023,Vermont,15,21.0,0,0,Mocker Bros
+2023,Houston,1,325.0,2,80.02,David
+2023,Northern Ky.,16,19.0,0,0,Mocker Bros
+2023,Iowa,8,37.0,0,0,Joey D
+2023,Auburn,9,31.0,1,30.01,Mocker Bros
+2023,Miami (FL),5,55.0,4,330.08,Danny
+2023,Drake,12,25.0,0,0,Joey D
+2023,Indiana,4,76.0,1,30.01,Jimmer
+2023,Kent St.,13,26.0,0,0,Jensen
+2023,Iowa St.,6,48.0,0,0,Mocker Bros
+2023,Mississippi St./Pitt,11,35.0,1,30.01,Danny
+2023,Xavier,3,70.0,2,80.02,David
+2023,Kennesaw St.,14,15.0,0,0,Jimmer
+2023,Texas A&M,7,71.0,0,0,Joey D
+2023,Penn St.,10,16.0,1,30.01,Mocker Bros
+2023,Texas,2,187.0,3,170.04,Brakke
+2023,Colgate,15,11.0,0,0,David
+2023,Kansas,1,204.0,1,30.01,Matt
+2023,Howard,16,15.0,0,0,Trennon
+2023,Arkansas,8,40.0,2,80.02,David
+2023,Illinois,9,28.0,0,0,Faz
+2023,Saint Mary's,5,58.0,1,30.01,Matt
+2023,VCU,12,23.0,0,0,Joey D
+2023,UConn,4,67.0,6,890.22,Jensen
+2023,Iona,13,15.0,0,0,Chase
+2023,TCU,6,53.0,1,30.01,Josh
+2023,Arizona St./Nevada,11,17.0,0,0,Faz
+2023,Gonzaga,3,178.0,3,170.04,Danny
+2023,Grand Canyon,14,16.0,0,0,Danny
+2023,Northwestern,7,34.0,1,30.01,Jimmer
+2023,Boise St.,10,35.0,0,0,David
+2023,UCLA,2,170.0,2,80.02,David
+2023,UNC Asheville,15,13.0,0,0,David
+2024,UConn,1,525.0,6,1276.33,David
+2024,Stetson,16,14.0,0,0,Timmy
+2024,FAU,8,49.0,0,0,Josh
+2024,Northwestern,9,28.0,1,47.24,Faisal
+2024,San Diego St.,5,83.0,2,129.13,Mocker
+2024,UAB,12,16.0,0,0,MoBros
+2024,Auburn,4,212.0,0,0,Danny
+2024,Yale,13,18.0,1,47.24,Jimmer
+2024,BYU,6,101.0,0,0,Trennon
+2024,Duquesne,11,19.0,1,47.24,Matt
+2024,Illinois,3,181.0,3,284.24,David
+2024,Morehead St.,14,16.0,0,0,Erik
+2024,Washington St.,7,60.0,1,47.24,MoBros
+2024,Drake,10,66.0,0,0,Mocker
+2024,Iowa St.,2,335.0,2,129.13,Joey D
+2024,South Dakota St.,15,14.0,0,0,Mocker
+2024,North Carolina,1,264.0,2,129.13,Joey D
+2024,Howard/Wagner,16,10.0,0,0,Erik
+2024,Mississippi St.,8,48.0,0,0,Erik
+2024,Michigan St.,9,78.0,1,47.24,Trennon
+2024,Saint Mary's,5,103.0,0,0,Timmy
+2024,Grand Canyon,12,46.0,1,47.24,Danny
+2024,Alabama,4,155.0,4,504.71,Erik
+2024,Charleston,13,21.0,0,0,Jimmer
+2024,Clemson,6,65.0,3,284.24,Matt
+2024,New Mexico,11,94.0,0,0,Faisal
+2024,Baylor,3,193.0,1,47.24,Rob
+2024,Colgate,14,20.0,0,0,Matt
+2024,Dayton,7,31.0,1,47.24,Faisal
+2024,Nevada,10,55.0,0,0,Erik
+2024,Arizona,2,331.0,2,129.13,Rob
+2024,Long Beach St.,15,11.0,0,0,Jimmer
+2024,Houston,1,405.0,2,129.13,Trennon
+2024,Longwood,16,19.0,1,125.98,MoBros
+2024,Nebraska,8,56.0,0,0,Faisal
+2024,Texas A&M,9,55.0,1,47.24,MoBros
+2024,Wisconsin,5,109.0,0,0,Tyler
+2024,James Madison,12,42.0,1,47.24,Timmy
+2024,Duke,4,181.0,3,284.24,Faisal
+2024,Vermont,13,18.0,0,0,Jimmer
+2024,Texas Tech,6,76.0,0,0,Mocker
+2024,NC State,11,41.0,4,504.71,Joey D
+2024,Kentucky,3,223.0,0,0,David
+2024,Oakland,14,19.0,1,47.24,Faisal
+2024,Florida,7,89.0,0,0,Danny
+2024,Colorado/Boise St.,10,36.0,1,47.24,MoBros
+2024,Marquette,2,197.0,2,129.13,David
+2024,Western Kentucky,15,13.0,0,0,Erik
+2024,Purdue,1,342.0,5,835.4,Danny
+2024,Grambling/Montana St.,16,13.0,0,0,MoBros
+2024,Utah St.,8,40.0,1,47.24,Joey D
+2024,TCU,9,50.0,0,0,Trennon
+2024,Gonzaga,5,146.0,2,129.13,Mocker
+2024,McNeese,12,48.0,0,0,Matt
+2024,Kansas,4,101.0,1,47.24,David
+2024,Samford,13,37.0,0,0,Matt
+2024,South Carolina,6,50.0,0,0,Erik
+2024,Oregon,11,52.0,1,47.24,Jimmer
+2024,Creighton,3,190.0,2,129.13,Erik
+2024,Akron,14,14.0,0,0,David
+2024,Texas,7,60.0,1,47.24,Erik
+2024,Virginia/Colorado St.,10,50.0,0,0,Joey D
+2024,Tennessee,2,253.0,3,284.24,MoBros
+2024,Saint Peter's,15,12.0,0,0,Mocker
+2025,Auburn,1,583.0,4,857.1,Jensen
+2025,Alabama State,16,39.0,0,0,Faisal
+2025,Louisville,8,169.0,0,0,MockerBros
+2025,Creighton,9,132.0,1,80.23,Mocker
+2025,Michigan,5,199.0,2,219.29,Joey D
+2025,UC San Diego,12,92.0,0,0,Timmy
+2025,Texas A&M,4,183.0,1,80.23,Faisal
+2025,Yale,13,71.0,0,0,Jimmer
+2025,Ole Miss,6,159.0,2,219.29,Danny
+2025,SDSU / UNC,11,124.0,0,0,Timmy
+2025,Iowa State,3,226.0,1,80.23,Mocker
+2025,Lipscomb,14,31.0,0,0,Jimmer
+2025,Marquette,7,112.0,0,0,Mocker
+2025,New Mexico,10,91.0,1,80.23,Jimmer
+2025,Michigan State,2,404.0,3,482.7,Faisal
+2025,Bryant,15,22.0,0,0,Jensen
+2025,Florida,1,781.0,6,2167.48,Robot Dave
+2025,Norfolk State,16,30.0,0,0,Faisal
+2025,UConn,8,141.0,1,80.23,Mocker
+2025,Oklahoma,9,70.0,0,0,Steven
+2025,Memphis,5,95.0,0,0,Faisal
+2025,Colorado State 💔,12,117.0,2,420.15,Joey D
+2025,Maryland,4,296.0,2,219.29,Mocker
+2025,Grand Canyon,13,37.0,0,0,Faisal
+2025,Missouri,6,203.0,0,0,Robot Dave
+2025,Drake,11,111.0,1,80.23,Joey D
+2025,Texas Tech,3,351.0,3,482.7,Faisal
+2025,UNCW,14,32.0,0,0,Faisal
+2025,Kansas,7,163.0,0,0,Mocker
+2025,Arkansas,10,57.0,2,219.29,Joey D
+2025,St. John's,2,400.0,1,80.23,Danny
+2025,Omaha,15,20.0,0,0,Faisal
+2025,Duke,1,839.0,4,857.1,Tyler
+2025,Mount St. Mary's,16,39.0,1,213.94,MockerBros
+2025,Mississippi State,8,65.0,0,0,Faisal
+2025,Baylor,9,76.0,1,80.23,Mocker
+2025,Oregon,5,141.0,1,80.23,Jimmer
+2025,Liberty,12,68.0,0,0,Mocker
+2025,Arizona,4,251.0,2,219.29,Steven
+2025,Akron,13,41.0,0,0,Steven
+2025,BYU,6,162.0,2,219.29,Steven
+2025,VCU,11,121.0,0,0,Joey D
+2025,Wisconsin,3,314.0,1,80.23,Jimmer
+2025,Montana,14,31.0,0,0,Steven
+2025,St. Mary's,7,142.0,1,80.23,Danny
+2025,Vanderbilt,10,53.0,0,0,Trennon
+2025,Alabama,2,301.0,3,482.7,MockerBros
+2025,Robert Morris,15,28.0,0,0,Danny
+2025,Houston,1,662.0,5,1418.69,Pretzel Rob
+2025,SIU Edwardsville,16,39.0,0,0,Mocker
+2025,Gonzaga,8,158.0,1,80.23,Danny
+2025,Georgia,9,46.0,0,0,Faisal
+2025,Clemson,5,231.0,0,0,MockerBros
+2025,McNeese,12,41.0,1,80.23,Faisal
+2025,Purdue,4,194.0,2,219.29,Robot Dave
+2025,High Point,13,45.0,0,0,Mocker
+2025,Illinois,6,170.0,1,80.23,Joey D
+2025,Texas / Xavier,11,131.0,0,0,Jimmer
+2025,Kentucky,3,203.0,2,219.29,Trennon
+2025,Troy,14,34.0,0,0,Pretzel Rob
+2025,UCLA,7,104.0,1,80.23,Robot Dave
+2025,Utah State,10,62.0,0,0,Trennon
+2025,Tennessee,2,335.0,3,482.7,Jensen
+2025,Wofford,15,29.0,0,0,Faisal
